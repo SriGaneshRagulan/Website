@@ -149,19 +149,6 @@ h1 {
 @keyframes flicker {
     0%,18%,25%,60% {
         color: var(--background);
-        text-shadow: 0 0 1px var(--header-text-1);
-    }
-    18.1%,25.1%,90% {
-        color: var(--header-text-1);
-        text-shadow: 0 0 5px var(--header-text-1),
-        0 0 20px wheat,
-        0 0 40px chocolate;
-    }
-}
-
-/* @keyframes flicker {
-    0%,18%,25%,60% {
-        color: var(--background);
         text-shadow: 0 0 1px #696a5a;
     }
     18.1%,25.1%,90% {
@@ -172,7 +159,7 @@ h1 {
         0 0 60px #d7a04e,
         0 0 80px #f6a327;
     }
-} */
+}
 
 
 /* 4. Glow */
