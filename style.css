@@ -8,7 +8,7 @@
 body {
     color: #f8f8f2;
     background: #272822;
-    margin: 0 auto;
+    margin: 0 auto; /* top-&-bottom right-&-left (if 2 values) */
 }
 
 h1 {
@@ -23,9 +23,8 @@ h1 {
 
 #topbar {
     flex: 1;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 1rem;
+    padding: 1rem 2rem 0rem; /* top right-&-left bottom (if 3 values)*/
+    /* top right bottom left (if 4 values)*/
 }
 
 #topbar a[href] {
@@ -35,16 +34,15 @@ h1 {
 
 #menu {
     gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
+}
+
+#menu path {
+    fill: var(--text);
 }
 
 #profile {
-    padding: 1rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    padding: 1rem 5rem;
+    margin: 0 5rem;
     background-color: #44463b;
     border-radius: 30px;
     gap: 2.5rem;
@@ -108,6 +106,7 @@ h1 {
     }
 }
 
+
 /* 2. Underline */
 .underline {
     position: relative;
@@ -143,15 +142,16 @@ h1 {
 
 /* 3. Flicker */
 .flicker {
-    animation: flicker 2s ease-in-out;
+    animation: flicker 2s ease-out;
 }
+
 
 @keyframes flicker {
     0%,18%,25%,60% {
         color: var(--background);
         text-shadow: 0 0 1px #696a5a;
     }
-    18.1%,25.1%,90% {
+    18.1%,25.1% {
         color: var(--header-text-1);
         text-shadow: 0 0 10px #c4a981,
         0 0 20px #e4b772,
@@ -159,20 +159,62 @@ h1 {
         0 0 60px #d7a04e,
         0 0 80px #f6a327;
     }
+    90% {
+      color: var(--header-text-1);
+    }
 }
 
 
-/* 4. Glow */
-.glow:hover {
-    transition: filter 0.2s ease-out;
-    filter: drop-shadow(0 0 6px gold);
+/* 4. Glow (only for big screens) */
+@media (min-width: 800px) {
+    .glow:hover {
+        transition: filter 0.2s ease-out;
+        filter: drop-shadow(0 0 6px gold);
+    }
+
+    .glow:hover svg {
+        filter: drop-shadow(0 0 8px orange);
+    }
+
+    /* svg-icon color */
+    .glow-icon:hover path {
+        fill: orange;
+        transition-duration: 0.75s;
+    }
 }
 
-.glow:hover svg {
-    filter: drop-shadow(0 0 8px orange);
+/* 5. Spin */
+.spin {
+    animation: spinner 3s ease-in-out;
 }
 
-/* svg-icon color */
-.glow-icon:hover path {
-    fill: orange;
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-45deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* 6. Flip */
+.flip {
+    cursor: pointer;
+}
+
+.flip:hover {
+    animation: flip 1s linear;
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
 }
