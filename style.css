@@ -34,10 +34,8 @@ h1 {
 
 #menu {
     gap: 1rem;
-}
-
-#menu path {
-    fill: var(--text);
+    align-items: center;
+    justify-content: center;
 }
 
 #profile {
@@ -100,11 +98,11 @@ h1 {
     transform: translateX(0);
 }
 
-@media(prefers-reduced-motion) {
+/* @media(prefers-reduced-motion) {
     .hidden {
         transition: none;
     }
-}
+} */
 
 
 /* 2. Underline */
@@ -166,7 +164,7 @@ h1 {
 
 
 /* 4. Glow (only for big screens) */
-@media (min-width: 800px) {
+@media (min-width: 600px) {
     .glow:hover {
         transition: filter 0.2s ease-out;
         filter: drop-shadow(0 0 6px gold);
