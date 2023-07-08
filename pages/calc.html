@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    
+    <style>
+        *, *::after, *::before {
+            box-sizing: border-box;
+            font-weight: normal;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background: linear-gradient(to right, #00AAFF, #00FF6C);
+            /* background: #272822; */
+        }
+
+        .calc {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            min-height: 100vh;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+        }
+
+        .calc button {
+            cursor: pointer;
+            font-size: 2rem;
+            border: 1px solid white;
+            border-radius: 10px;
+            margin: 2px;
+            outline: none;
+            background-color: rgba(255, 255, 255, .75);
+        }
+
+        .calc button:hover {
+            background-color: rgba(255, 255, 255, .90);
+        }
+
+        .span-two {
+            grid-column: span 2;
+        }
+
+        .output {
+            grid-column: 1 / -1;
+            background-color: rgba(0, 0, 0, .75);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 10px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .output .previous {
+            color: rgba(255, 255, 255, .75);
+            font-size: 1.5rem;
+        }
+
+        .output .current {
+            color: rgba(255, 255, 255, 1);
+            font-size: 2.5rem;
+        }
+    </style>
+
+    <script defer src="calc.js"></script>
+
+</head>
+<body>
+    <div class="calc">
+        <div class="output">
+            <div data-previous class="previous"></div>
+            <div data-current class="current"></div>
+        </div>
+        <button data-all-clear class="span-two">AC</button>
+        <button data-delete>DEL</button>
+        <button data-operation>/</button>
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button data-operation>*</button>
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button data-operation>-</button>
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button data-operation>+</button>
+        <button data-number class="span-two">0</button>
+        <button data-number>.</button>
+        <button data-equals>=</button>
+    </div>
+</body>
+</html>
