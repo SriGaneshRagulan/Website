@@ -43,8 +43,12 @@ body {
     transition: 100ms ease-out;
 }
 
-.card:hover {
+.card:hover, .card:active {
     transform: translateY(-1rem);
+}
+
+.card:hover h2, .card:active h2 {
+    color: gold; 
 }
 
 /* 
@@ -52,14 +56,10 @@ body {
     Selects all the siblings after the current one
 */
 
-.card:hover~.card {
+.card:hover~.card, .card:active~.card {
     transform: translateX(130px);
 }
 
 .card:not(:first-child) {
     margin-left: -130px;
-}
-
-.card-header h2:hover {
-    color: gold;
 }
