@@ -1,218 +1,207 @@
 :root {
-    --text: #f8f8f2;
-    --background: #272822;
-    --header-text-1: #ffd700;
-    --text-2: #f5deb3;
+  --bg: #282828;
+  --bg0: #44463b;
+  --text: #ebdbb2;
+  --text0: #a89984;
+  --red: #cc241d;
+  --green: #98971a;
+  --yellow: #d79921;
+  --blue: #458588;
+  --magenta: #b16286;
+  --cyan: #689d6a;
+  --red0: #fb4934;
+  --green0: #b8bb26;
+  --yellow0: #fabd2f;
+  --blue0: #83a598;
+  --magenta0: #d3869b;
+  --cyan0: #8ec07c;
 }
 
 body {
-    color: #f8f8f2;
-    background: #272822;
-    margin: 0 auto; /* top-&-bottom right-&-left (if 2 values) */
+  background: var(--bg);
+  color: var(--text);
 }
 
-h1 {
-    color: var(--header-text-1);
+a {
+  color: var(--green0);
 }
 
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
 }
 
-#topbar {
-    flex: 1;
-    padding: 1rem 2rem 0rem; /* top right-&-left bottom (if 3 values)*/
-    /* top right bottom left (if 4 values)*/
+.navbar {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
-#topbar a[href] {
-    text-decoration: none;
-    color: #f8f8f2;
+.navbar ul {
+  padding: 0;
 }
 
-#menu {
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
+.navbar li {
+  list-style: none;
+  display: inline;
+  padding: 0 1rem;
 }
 
-#profile {
-    padding: 1rem 5rem;
-    margin: 0 5rem;
-    background-color: #44463b;
-    border-radius: 30px;
-    gap: 2.5rem;
-    color: var(--text-2);
+.navbar a {
+  text-decoration: none;
+  color: var(--blue0);
+  font-weight: bold;
 }
 
-#profile img {
-    display: block;
-    border-radius: 50%;
-    max-width: 200px;
+.navbar a#current-page {
+  text-decoration: underline;
+  color: var(--yellow0);
 }
 
-#profile:nth-child(1) {
-    transition-delay: 100ms;
+#title {
+  color: var(--yellow);
+  margin: 1.25rem;
 }
 
-#profile:nth-child(2) {
-    transition-delay: 200ms;
+.center {
+  text-align: center;
 }
 
-@media (max-width: 800px) {
-    #profile {
-        flex-direction: column-reverse;
-        align-items: center;
-        text-align: center;
-        padding: 2rem;
-        margin: 2rem;
-        transition-duration: 2s;
-    }
-
-    #profile img {
-        padding: 0.5rem;
-    }
+#content {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
 }
 
-@media (min-width: 800.1px) {
-    #profile {
-        transition-duration: 1s;
-    }
+.box {
+  display: flex;
+  margin: 0rem 5rem;
+  padding: 1rem 2rem;
+  gap: 3rem;
+  background: var(--bg0);
+  max-width: 1440px;
+  border-radius: 2rem;
 }
 
-
-/* Animations */
-/* 1. Fade-in and Slide */
-.hidden {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(-100%);
-    transition: all 1s ease-out;
+.box .box-content {
+  display: flex;
+  padding: 1rem 1rem;
+  flex-direction: column;
 }
 
-.show {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
+.profile-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* @media(prefers-reduced-motion) {
-    .hidden {
-        transition: none;
-    }
-} */
-
-
-/* 2. Underline */
-.underline {
-    position: relative;
-    display: inline-block;
+.profile-img img {
+  display: block;
+  height: 200px;
+  width: 200px;
+  object-position: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
-.underline::before,
-.underline::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 2.5px;
-    width: 0;
-    background: #f8f8f2;
-    transition: width 0.3s ease-out;
+@media screen and (max-width: 800px) {
+  .box {
+    flex-direction: column-reverse;
+    margin: 0 2rem;
+    gap: 0rem;
+    text-align: center; 
+  }
+
+  .box-content p {
+    text-align: left;
+  }
 }
 
-.underline::before {
-    left: 50%;
-    transform: translateX(-50%);
+img.skeleton.profile-pic {
+  height: 200px;
+  width: 200px;
+  justify-content: center;
+  object-position: center;
+  background-color: #888888;
 }
 
-.underline::after {
-    right: 50%;
-    transform: translateX(50%);
+footer {
+  padding: 5px 0 5px;
 }
 
-.underline:hover::before,
-.underline:hover::after {
-    width: 100%;
+footer path {
+  fill: var(--text0);
 }
 
 
-/* 3. Flicker */
-.flicker {
-    animation: flicker 2s ease-out;
+/* Home Page Card Animation */
+
+.card-list {
+  display: flex;
+  padding: 3rem;
+  overflow-x: scroll;
 }
 
-
-@keyframes flicker {
-    0%,18%,25%,60% {
-        color: var(--background);
-        text-shadow: 0 0 1px #696a5a;
-    }
-    18.1%,25.1% {
-        color: var(--header-text-1);
-        text-shadow: 0 0 10px #c4a981,
-        0 0 20px #e4b772,
-        0 0 40px #c99d5c,
-        0 0 60px #d7a04e,
-        0 0 80px #f6a327;
-    }
-    90% {
-      color: var(--header-text-1);
-    }
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px;
+  width: 350px;
+  min-width: 250px;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: var(--bg0);
+  box-shadow: -0.5rem 0 2rem #000000;
+  transition: 200ms ease-out;
 }
 
-
-/* 4. Glow (only for big screens) */
-@media (min-width: 600px) {
-    .glow:hover {
-        transition: filter 0.2s ease-out;
-        filter: drop-shadow(0 0 6px gold);
-    }
-
-    .glow:hover svg {
-        filter: drop-shadow(0 0 8px orange);
-    }
-
-    /* svg-icon color */
-    .glow-icon:hover path {
-        fill: orange;
-        transition-duration: 0.75s;
-    }
+.card:hover {
+  transform: translateY(-1rem);
 }
 
-/* 5. Spin */
-.spin {
-    animation: spinner 3s ease-in-out;
+.card:hover h2 {
+  color: var(--yellow0);
 }
 
-@keyframes spinner {
-    from {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(-45deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.card:hover~.card {
+  transform: translateX(130px);
 }
 
-
-/* 6. Flip */
-.flip {
-    cursor: pointer;
+.card:not(:first-child) {
+  margin-left: -130px;
 }
 
-.flip:hover {
-    animation: flip 1s linear;
+.card-header .card-date {
+  color: var(--green0);
+  font-size: large;
+  font-family: monospace;
 }
 
-@keyframes flip {
-    from {
-        transform: rotateY(0deg);
-    }
-    to {
-        transform: rotateY(360deg);
-    }
+.card-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  font-family: sans-serif;
+  text-decoration: none;
+  font-size: 1em;
+  background-color: var(--green);
+  color: var(--text);
+  border-radius: 0.25em;
+  padding: 0.2em 0.2em;
+  cursor: pointer;
+}
+
+.button:hover, .button:focus {
+  background-color: var(--green0);
+  color: white;
+}
+
+/* If two button are together, then create a space between them */
+.button + .button {
+  margin-left: 0.25rem;
 }
