@@ -11,10 +11,6 @@ a#link {
     text-decoration: underline;
 }
 
-a {
-    text-decoration: none;
-}
-
 .timeline {
     margin: 1rem;
     padding: 0 1rem;
@@ -63,8 +59,21 @@ a {
     color: var(--text);
 }
 
+.title a {
+    text-decoration: underline 1px;
+    color: var(--text);
+}
+
+.title a:hover {
+    color: var(--yellow0);
+}
+
 .title path {
     fill: var(--text);
+}
+
+.title a:hover path {
+    fill: var(--yellow0)
 }
 
 .description {
