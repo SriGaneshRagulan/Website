@@ -29,5 +29,10 @@
 }
 
 a#blog-title {
+    text-decoration: none;
+    color: var(--green0);
+}
+
+a#blog-title:hover {
     color: var(--yellow0);
 }

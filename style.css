@@ -74,6 +74,7 @@ h1,h2,h3,h4,h5,h6 {
   padding: 1rem 2rem;
   gap: 3rem;
   background: var(--bg0);
+  min-width: 250px;
   max-width: 1200px;
   border-radius: 2rem;
   box-shadow: 2px 2px 5px black;
@@ -84,7 +85,11 @@ h1,h2,h3,h4,h5,h6 {
   color: var(--green0);
 }
 
-.box .box-content {
+.box a:hover {
+  color: var(--yellow0);
+}
+
+.box-content {
   display: flex;
   padding: 1rem 1rem;
   flex-direction: column;
@@ -110,9 +115,10 @@ h1,h2,h3,h4,h5,h6 {
 @media screen and (max-width: 800px) {
   .box {
     flex-direction: column-reverse;
-    margin: 0 2rem;
-    gap: 0rem;
-    text-align: center; 
+    gap: 0;
+    margin: 0 1rem;
+    text-align: center;
+    padding: 1rem 0.5rem;
   }
 
   .box-content p {
