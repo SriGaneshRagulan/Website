@@ -1,20 +1,8 @@
-#blog {
-    display: flex;
-    flex-direction: column;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    justify-content: center;
-    margin: 0 10rem;
-}
-
-@media screen and (max-width: 800px) {
-    #blog {
-      margin: 0 1rem;
-    }
-}
-
 #blog-post {
     padding: 1rem 2rem;
     border-bottom: 2px solid var(--text);
+    margin: 0 2rem;
+    max-width: 1200px;
 }
 
 #blog-post .date {
@@ -26,6 +14,13 @@
 #blog-post p {
     margin: 0;
     padding: 0;
+}
+
+@media screen and (max-width: 800px) {
+    #blog-post {
+        margin: 0 1rem;
+        padding: 1rem;
+    }
 }
 
 a#blog-title {

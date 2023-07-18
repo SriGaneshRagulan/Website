@@ -22,8 +22,7 @@ a {
 }
 
 .event {
-    max-width: 1000px;
-    min-width: 300px;
+    max-width: 800px;
     position: relative;
     background: var(--bg0);
     margin-bottom: 1rem;

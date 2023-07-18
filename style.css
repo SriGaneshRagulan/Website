@@ -44,7 +44,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .navbar a {
   text-decoration: none;
-  color: var(--blue0);
+  color: var(--green);
   font-weight: bold;
 }
 
@@ -59,9 +59,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #content {
-  display: flex;
+  display: grid;
   justify-content: center;
-  margin: 1rem;
+  gap: 1rem;
 }
 
 .center {
