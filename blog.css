@@ -1,22 +1,3 @@
-:root {
-    --bg: #282828;
-    --bg0: #44463b;
-    --text: #ebdbb2;
-    --text0: #a89984;
-    --red: #cc241d;
-    --green: #98971a;
-    --yellow: #d79921;
-    --blue: #458588;
-    --magenta: #b16286;
-    --cyan: #689d6a;
-    --red0: #fb4934;
-    --green0: #b8bb26;
-    --yellow0: #fabd2f;
-    --blue0: #83a598;
-    --magenta0: #d3869b;
-    --cyan0: #8ec07c;
-}
-
 #blog {
     display: flex;
     flex-direction: column;
@@ -27,29 +8,26 @@
 
 @media screen and (max-width: 800px) {
     #blog {
-      margin: 0 2rem;
+      margin: 0 1rem;
     }
-  
-    .box-content p {
-      text-align: left;
-    }
-  }
+}
 
 #blog-post {
     padding: 1rem 2rem;
     border-bottom: 2px solid var(--text);
 }
 
-#blog-post header {
-    color: var(--yellow0);
-}
-
 #blog-post .date {
     font-size: 0.9rem;
+    font-weight: 600;
     color: var(--green);
 }
 
 #blog-post p {
     margin: 0;
     padding: 0;
+}
+
+a#blog-title {
+    color: var(--yellow0);
 }

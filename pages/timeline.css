@@ -1,22 +1,3 @@
-:root {
-    --bg: #282828;
-    --bg0: #44463b;
-    --text: #ebdbb2;
-    --text0: #a89984;
-    --red: #cc241d;
-    --green: #98971a;
-    --yellow: #d79921;
-    --blue: #458588;
-    --magenta: #b16286;
-    --cyan: #689d6a;
-    --red0: #fb4934;
-    --green0: #b8bb26;
-    --yellow0: #fabd2f;
-    --blue0: #83a598;
-    --magenta0: #d3869b;
-    --cyan0: #8ec07c;
-}
-
 body {
     background: var(--bg);
 }
@@ -34,16 +15,6 @@ a {
     text-decoration: none;
 }
 
-#title {
-    text-align: center;
-    color: var(--yellow);
-}
-
-#content {
-    display: flex;
-    justify-content: center;
-}
-
 .timeline {
     margin: 1rem;
     padding: 0 1rem;
@@ -57,7 +28,7 @@ a {
     background: var(--bg0);
     margin-bottom: 1rem;
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     box-shadow: 2px 2px 5px black;
 }
 
@@ -85,15 +56,12 @@ a {
 }
 
 .date {
-    /* font-family: monospace; */
     font-size: 0.8rem;
     color: var(--green0);
-    text-shadow: 1px 1px 1px black;
 }
 
 .title {
     color: var(--text);
-    text-shadow: 1px 1px 1px black;
 }
 
 .title path {
@@ -102,7 +70,6 @@ a {
 
 .description {
     color: var(--text0);
-    /* text-shadow: 1px 1px 1px black; */
 }
 
 .description path {

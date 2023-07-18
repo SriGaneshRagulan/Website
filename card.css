@@ -1,0 +1,68 @@
+.card-list {
+    display: flex;
+    padding: 3rem;
+    overflow-x: scroll;
+}
+
+.card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 350px;
+    width: 350px;
+    min-width: 250px;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: var(--bg0);
+    box-shadow: -0.5rem 0 2rem #000000;
+    transition: 200ms ease-out;
+}
+
+.card:hover {
+    transform: translateY(-1rem);
+}
+
+.card:hover h2 {
+    color: var(--yellow0);
+}
+
+.card:hover~.card {
+    transform: translateX(130px);
+}
+
+.card:not(:first-child) {
+    margin-left: -130px;
+}
+
+.card-header .card-date {
+    color: var(--green0);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 1em;
+    background-color: var(--yellow);
+    color: var(--bg);
+    border-radius: 0.25em;
+    padding: 0.2em 0.2em;
+    cursor: pointer;
+}
+
+.button:hover, .button:focus {
+    background-color: var(--magenta);
+    color: var(--bg);
+}
+
+/* If two button are together, then create a space between them */
+.button + .button {
+    margin-left: 0.25rem;
+}
