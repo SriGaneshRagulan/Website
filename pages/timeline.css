@@ -6,11 +6,6 @@ h1,h2,h3,h4,h5,h6 {
     margin: 0;
 }
 
-a#link {
-    color: var(--green);
-    text-decoration: underline;
-}
-
 .timeline {
     margin: 1rem;
     padding: 0 1rem;
@@ -55,24 +50,24 @@ a#link {
     color: var(--green0);
 }
 
-.title {
+.event-title {
     color: var(--text);
 }
 
-.title a {
+.event-title a {
     text-decoration: none;
     color: var(--text);
 }
 
-.title a:hover {
+.event-title a:hover {
     color: var(--yellow0);
 }
 
-.title path {
+.event-title path {
     fill: var(--text);
 }
 
-.title a:hover path {
+.event-title a:hover path {
     fill: var(--yellow0)
 }
 

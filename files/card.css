@@ -15,10 +15,6 @@
     border-radius: 10px;
 }
 
-/* .card-list::-webkit-scrollbar-track {
-    color: var(--red);
-} */
-
 .card {
     display: flex;
     position: relative;

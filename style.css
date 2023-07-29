@@ -48,17 +48,17 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: bold;
 }
 
-.navbar a#current-page {
+.navbar a.current-page {
   text-decoration: underline;
   color: var(--yellow0);
 }
 
-#title {
+.title {
   color: var(--yellow);
   margin: 1.25rem;
 }
 
-#content {
+.content {
   display: grid;
   justify-content: center;
   gap: 1rem;
@@ -129,8 +129,6 @@ h1,h2,h3,h4,h5,h6 {
 img.skeleton.profile-pic {
   height: 200px;
   width: 200px;
-  justify-content: center;
-  object-position: center;
   background-color: #888888;
 }
 
