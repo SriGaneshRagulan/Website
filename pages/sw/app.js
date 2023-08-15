@@ -4,7 +4,7 @@ const frame = document.querySelector('.stopwatch')
 
 const pauseButton = document.createElement('span')
 pauseButton.id = "pause"
-pauseButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>'
+pauseButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>'
 
 const resetButton = document.createElement('span')
 resetButton.id = "reset"
@@ -12,14 +12,14 @@ resetButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" vi
 
 const lapButton = document.createElement('span')
 lapButton.id = 'lap'
-lapButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M176 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h16V98.4C92.3 113.8 16 200 16 304c0 114.9 93.1 208 208 208s208-93.1 208-208c0-41.8-12.3-80.7-33.5-113.2l24.1-24.1c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L355.7 143c-28.1-23-62.2-38.8-99.7-44.6V64h16c17.7 0 32-14.3 32-32s-14.3-32-32-32H224 176zm72 192V320c0 13.3-10.7 24-24 24s-24-10.7-24-24V192c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>'
+lapButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M176 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h16V98.4C92.3 113.8 16 200 16 304c0 114.9 93.1 208 208 208s208-93.1 208-208c0-41.8-12.3-80.7-33.5-113.2l24.1-24.1c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L355.7 143c-28.1-23-62.2-38.8-99.7-44.6V64h16c17.7 0 32-14.3 32-32s-14.3-32-32-32H224 176zm72 192V320c0 13.3-10.7 24-24 24s-24-10.7-24-24V192c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>'
 
 const placeHolder = document.createElement('div')
 placeHolder.classList.add("place-holder")
 
+let deciseconds = 0
 let seconds = 0
 let minutes = 0
-let hours = 0
 
 let timerInterval = null
 let timerStatus = "stopped"
@@ -30,42 +30,35 @@ let leadingSeconds = 0
 let leadingMinutes = 0
 
 function stopwatch() {
-    seconds++
-
-    if (seconds/60 === 1) {
-        seconds = 0
-        minutes++
-
-        if (minutes/60 === 1) {
-            minutes = 0
-            hours++
+    deciseconds++
+    if (deciseconds/10 === 1) {
+        deciseconds = 0
+        seconds++
+    
+        if (seconds/60 === 1) {
+            seconds = 0
+            minutes++
         }
     }
 
-    if (minutes > 0 && seconds < 10) {
+    if (seconds < 10) {
         leadingSeconds = "0" + seconds.toString()
     } else {
         leadingSeconds = seconds
     }
 
-    if (hours > 0 && minutes < 10) {
+    if (minutes < 10) {
         leadingMinutes = "0" + minutes.toString()
     } else {
         leadingMinutes = minutes
     }
-
-    if (hours !== 0) {
-        document.getElementById('display').innerText = hours + ":" + leadingMinutes + ":" + leadingSeconds
-    } else if (minutes !== 0) {
-        document.getElementById('display').innerText = leadingMinutes + ":" + leadingSeconds
-    } else {
-        document.getElementById('display').innerText = leadingSeconds
-    }
+    
+    document.getElementById('display').innerText = leadingMinutes + ":" + leadingSeconds + "." + deciseconds
 }
 
 function playPause() {
     if (timerStatus === "stopped") {
-        timerInterval = window.setInterval(stopwatch, 1000)
+        timerInterval = window.setInterval(stopwatch, 100)
         playButton.remove()
         placeHolder.remove()
         document.querySelector('.buttons').appendChild(resetButton)
@@ -97,7 +90,7 @@ resetButton.addEventListener('click', function() {
     seconds = 0
     minutes = 0
     hours = 0
-    document.getElementById('display').innerText = "0"
+    document.getElementById('display').innerText = "00:00.0"
     placeHolder.remove()
     resetButton.remove()
     pauseButton.remove()
@@ -118,6 +111,6 @@ resetButton.addEventListener('click', function() {
 lapButton.addEventListener('click', function() {
     counter += 1
     let laptime = document.createElement('li')
-    laptime.innerText = `#${counter} - ${hours}:${minutes}:${seconds}`
-    document.querySelector('#lap-time').appendChild(laptime)
+    laptime.innerText = `#${counter} - ${leadingMinutes}:${leadingSeconds}.${deciseconds}`
+    document.querySelector('#lap-time').insertBefore(laptime, document.querySelector('#lap-time').firstChild)
 })
