@@ -1,6 +1,6 @@
 const playButton = document.getElementById('play')
 const reset = document.getElementById('reset')
-const frame = document.querySelector('.stopwatch')
+const frame = document.getElementById('timer')
 
 const pauseButton = document.createElement('span')
 pauseButton.id = "pause"

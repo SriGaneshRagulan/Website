@@ -43,7 +43,7 @@ section {
     padding: calc(var(--stopwatch-size)/10);
 }
 
-.stopwatch {
+#timer {
     height: var(--stopwatch-size);
     width: var(--stopwatch-size);
     border-radius: 50%;
@@ -55,7 +55,7 @@ section {
     cursor: pointer;
 }
 
-.stopwatch #display {
+#timer #display {
     font-size: calc(var(--stopwatch-size)/5);
     user-select: none;
 }
@@ -160,6 +160,11 @@ section {
 .reset {
     animation: reset-animation 1s ease-in;
     border: 5px solid var(--bg0);
+}
+
+.expired {
+    animation: reset-animation 1.25s ease-in infinite;
+    border: 5px soild var(--bg0);
 }
 
 @keyframes reset-animation {
