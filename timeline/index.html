@@ -5,17 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SriGaneshR Timeline</title>
     <meta name="description" content="SriGanesh's timeline. A timeline to check my progress of what I did in my youth.">
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        body {
+            background: var(--bg);
+        }
+
+        h1,h2,h3,h4,h5,h6 {
+            margin: 0;
+        }
+
+        .timeline {
+            margin: 1rem;
+            padding: 0 1rem;
+            border-left: 5px solid var(--bg0);
+        }
+
+        .event {
+            max-width: 800px;
+            position: relative;
+            background: var(--bg0);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 2px 2px 5px black;
+        }
+
+        .event::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: calc(-2rem + 5.5px);
+            height: 16px;
+            width: 16px;
+            background: var(--yellow0);
+            border-radius: 50%;
+            transition: 0s;
+            transition: 200ms box-shadow ease-out;
+        }
+
+        .event:hover {
+            transform: translateX(-0.5rem);
+        }
+
+        .event:hover::before {
+            left: calc(-1.5rem + 5.5px);
+            background-color: var(--magenta);
+            box-shadow: 0px 0px 10px var(--green);
+        }
+
+        .date {
+            font-size: 0.8rem;
+            color: var(--green0);
+        }
+
+        .event-title {
+            color: var(--text);
+        }
+
+        .event-title a {
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .event-title a:hover {
+            color: var(--yellow0);
+        }
+
+        .event-title path {
+            fill: var(--text);
+        }
+
+        .event-title a:hover path {
+            fill: var(--yellow0)
+        }
+
+        .description {
+            color: var(--text);
+        }
+
+        .description path {
+            color: var(--text);
+        }
+    </style>
+    
     <link rel="icon" href="../files/profile.webp">
 </head>
 <body>
     <nav class="navbar">
         <div class="links">
             <ul>
-                <li><a href="../../index.html">Home</a></li>
-                <li><a class="current-page" href="../../blog.html">Blog</a></li>
-                <li><a href="../../about.html">About</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a class="current-page" href="../blog.html">Blog</a></li>
+                <li><a href="../about.html">About</a></li>
             </ul>
         </div>
     </nav>
@@ -28,9 +111,19 @@
         <div class="timeline">
 
             <article class="event">
+                <span class="date">August 21, 2023</span>
+                <header class="event-title">
+                    <h2><a href="../app/chrono/index.html">Chronograph</a></h2>
+                </header>
+                <span class="description">
+                    Combined timer and stopwatch with the help of JavaScript and tabs.
+                </span>
+            </article>
+
+            <article class="event">
                 <span class="date">August 16, 2023</span>
                 <header class="event-title">
-                    <h2><a href="../timer/index.html">Countdown Timer</a></h2>
+                    <h2><a href="../app/chrono/index.html">Countdown Timer</a></h2>
                 </header>
                 <span class="description">
                     Reused most parts from stopwatch but the logic is harder than it looks. <br>(Both the Timer & Stopwatch share same CSS file)
@@ -40,7 +133,7 @@
             <article class="event">
                 <span class="date">August 15, 2023</span>
                 <header class="event-title">
-                    <h2><a href="../sw/index.html">Stopwatch</a></h2>
+                    <h2><a href="../app/chrono/index.html">Stopwatch</a></h2>
                 </header>
                 <span class="description">
                     The first ever website I created that includes JavaScript.
@@ -50,7 +143,7 @@
             <article class="event">
                 <span class="date">July 18, 2023</span>
                 <header class="event-title">
-                    <h2><a href="../../blog.html">First Blog Post</a></h2>
+                    <h2><a href="../blog.html">First Blog Post</a></h2>
                 </header>
                 <span class="description">
                     Posted Timeline as my first blog.
@@ -84,7 +177,7 @@
             <article class="event">
                 <span class="date">July 17, 2023</span>
                 <header class="event-title">
-                    <h2><a href="../../index.html">Home Page</a></h2>
+                    <h2><a href="../index.html">Home Page</a></h2>
                 </header>
                 <span class="description">
                     Redesigned Home Page with card stack animation.</a>
@@ -94,7 +187,7 @@
             <article class="event">
                 <span class="date">July 17, 2023</span>
                 <header class="event-title">
-                    <h2><a href="../../about.html">About Page</a></h2>
+                    <h2><a href="../about.html">About Page</a></h2>
                 </header>
                 <span class="description">
                     Added About Page. Click to check out why this website exists.
