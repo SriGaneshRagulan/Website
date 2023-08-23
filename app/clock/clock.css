@@ -1,6 +1,7 @@
 :root {
     --frame-size: min(25vw + 5rem, 25vh + 5rem);
-    --font-size: clamp(min(2vw + 0.8rem, 2vh + 0.8rem), 1rem, 10rem)
+    --font-size: clamp(min(2vw + 0.8rem, 2vh + 0.8rem), 1rem, 10rem);
+    --hand-size: calc(var(--frame-size)/20);
 }
 
 * {
@@ -15,7 +16,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; */
     gap: calc(var(--frame-size)/10);
 }
 
@@ -189,4 +189,96 @@ section {
     to {
         border: 5px solid var(--bg0);
     }
+}
+
+.clock {
+    position: relative;
+}
+
+.clock .number {
+    --rotation: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: rotate(var(--rotation));
+    font-weight: 800;
+}
+
+.clock .number-1 {
+    --rotation: 30deg;
+}
+.clock .number-2 {
+    --rotation: 60deg;
+}
+.clock .number-3 {
+    --rotation: 90deg;
+}
+.clock .number-4 {
+    --rotation: 120deg;
+}
+.clock .number-5 {
+    --rotation: 150deg;
+}
+.clock .number-6 {
+    --rotation: 180deg;
+}
+.clock .number-7 {
+    --rotation: 210deg;
+}
+.clock .number-8 {
+    --rotation: 240deg;
+}
+.clock .number-9 {
+    --rotation: 270deg;
+}
+.clock .number-10 {
+    --rotation: 300deg;
+}
+.clock .number-11 {
+    --rotation: 330deg;
+}
+
+.clock .hand {
+    --rotation: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    background: var(--bg0);
+    border-top-left-radius: var(--hand-size);
+    border-top-right-radius: var(--hand-size);
+    transform-origin: bottom;
+    z-index: 10;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
+
+.clock::after {
+    content: '';
+    position: absolute;
+    background-color: var(--red);
+    z-index: 11;
+    width: var(--hand-size);
+    height: var(--hand-size);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.clock .hand.second {
+    width: calc(var(--hand-size)/4);
+    height: 43%;
+    background: var(--red);
+}
+
+.clock .hand.hour {
+    width: calc(var(--hand-size)/2);
+    height: 30%;
+    background: var(--text0);
+}
+
+.clock .hand.minute {
+    width: calc(var(--hand-size)/2);
+    height: 41%;
+    background: var(--text0);
 }

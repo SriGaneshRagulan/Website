@@ -3,23 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Timer & Stopwatch combined together makes a Chronograph.">
+    <meta name="description" content="Combined Clock, Timer and Stopwatch into a single webpage">
     <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="chrono.css">
+    <link rel="stylesheet" href="clock.css">
     <link rel="icon" href="../../files/profile.webp">
+    <script defer src="clock.js"></script>
     <script defer src="stopwatch.js"></script>
     <script defer src="timer.js"></script>
-    <title>Chronograph</title>
+    <title>Clock</title>
 </head>
 <body>
     <nav class="navbar">
         <ul>
-            <li><span class="current-tab" id="timer-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64V75c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32H64 320h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V437c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320 64 32zM96 75V64H288V75c0 25.5-10.1 49.9-28.1 67.9L192 210.7l-67.9-67.9C106.1 124.9 96 100.4 96 75z"/></svg></span></li>
+            <li><span class="current-tab" id="clock-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg></span></li>
+            <li><span id="timer-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64V75c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32H64 320h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V437c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320 64 32zM96 75V64H288V75c0 25.5-10.1 49.9-28.1 67.9L192 210.7l-67.9-67.9C106.1 124.9 96 100.4 96 75z"/></svg></span></li>
             <li><span id="stopwatch-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M176 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h16V98.4C92.3 113.8 16 200 16 304c0 114.9 93.1 208 208 208s208-93.1 208-208c0-41.8-12.3-80.7-33.5-113.2l24.1-24.1c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L355.7 143c-28.1-23-62.2-38.8-99.7-44.6V64h16c17.7 0 32-14.3 32-32s-14.3-32-32-32H224 176zm72 192V320c0 13.3-10.7 24-24 24s-24-10.7-24-24V192c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg></span></li>
         </ul>
     </nav>
 
-    <section class="timer" id="Timer">
+    <section id="Clock">
+        <div class="clock frame" id="clock">
+            <div class="hand hour" id="clock-hourhand"></div>
+            <div class="hand minute" id="clock-minutehand"></div>
+            <div class="hand second" id="clock-secondhand"></div>
+            <div class="number number-1">1</div>
+            <div class="number number-2">2</div>
+            <div class="number number-3">3</div>
+            <div class="number number-4">4</div>
+            <div class="number number-5">5</div>
+            <div class="number number-6">6</div>
+            <div class="number number-7">7</div>
+            <div class="number number-8">8</div>
+            <div class="number number-9">9</div>
+            <div class="number number-10">10</div>
+            <div class="number number-11">11</div>
+            <div class="number number-12">12</div>
+        </div>
+    </section>
+
+    <section class="timer hidden" id="Timer">
         <div class="frame" id="timer">
             <div class="display" id="timer-display" contenteditable="true">1:00</div>
         </div>
@@ -52,13 +74,28 @@
     </section>
 
     <script>
+        const ClockIcon = document.getElementById('clock-icon')
         const TimerIcon = document.getElementById('timer-icon')
         const StopwatchIcon = document.getElementById('stopwatch-icon')
 
+        const Clock = document.getElementById('Clock')
         const Timer = document.getElementById('Timer')
         const Stopwatch = document.getElementById('Stopwatch')
 
+        let page = 1
+
+        function SwitchToClock() {
+            Clock.classList.remove('hidden')
+            ClockIcon.classList.add('current-tab')
+            Timer.classList.add('hidden')
+            TimerIcon.classList.remove('current-tab')
+            Stopwatch.classList.add('hidden')
+            StopwatchIcon.classList.remove('current-tab')
+        }
+
         function SwitchToTimer() {
+            Clock.classList.add('hidden')
+            ClockIcon.classList.remove('current-tab')
             Timer.classList.remove('hidden')
             TimerIcon.classList.add('current-tab')
             Stopwatch.classList.add('hidden')
@@ -66,22 +103,45 @@
         }
 
         function SwitchToStopwatch() {
+            Clock.classList.add('hidden')
+            ClockIcon.classList.remove('current-tab')
             Timer.classList.add('hidden')
             TimerIcon.classList.remove('current-tab')
             Stopwatch.classList.remove('hidden')
             StopwatchIcon.classList.add('current-tab')
         }
 
+        ClockIcon.addEventListener('click', SwitchToClock)
         TimerIcon.addEventListener('click', SwitchToTimer)
         StopwatchIcon.addEventListener('click', SwitchToStopwatch)
 
         window.addEventListener('keydown', function(e) {
             if (e.key === "PageDown") {
-                SwitchToStopwatch()
+                if (page > 1) {
+                    page--
+                }
+
+                if (page == 1) {
+                    SwitchToClock()
+                } else if (page == 2) {
+                    SwitchToTimer()
+                } else {
+                    SwitchToStopwatch()
+                }
             }
 
             if (e.key === "PageUp") {
-                SwitchToTimer()
+                if (page < 3) {
+                    page++
+                }
+
+                if (page == 1) {
+                    SwitchToClock()
+                } else if (page == 2) {
+                    SwitchToTimer()
+                } else {
+                    SwitchToStopwatch()
+                }
             }
         })
     </script>
