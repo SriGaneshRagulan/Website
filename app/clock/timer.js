@@ -83,7 +83,7 @@ function timer() {
                     timerPlaceHolder.classList.add('hidden')
                     timerFrame.classList.remove('Paused')
                     timerFrame.classList.add('Expired')
-                    console.log('timer Expired')
+                    console.log('%cTimer Expired', 'color: red;')
                     return
                 }
                 timerHours--
